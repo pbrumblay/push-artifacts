@@ -10,7 +10,7 @@ steps:
   - --key=ci-pipeline-key
 
 - name: 'gcr.io/cloud-builders/docker'
-  id: Build AG Node Prod
+  id: Build Application Image
   args: [
    'build',
    '--build-arg', 'push_test_results=true',
@@ -20,7 +20,7 @@ steps:
   ]
 
 - name: 'gcr.io/cloud-builders/docker'
-  id: Push AG Node Prod
+  id: Push Image
   args: [
    'push',
    'gcr.io/cookbook-1180/push-artifacts'
