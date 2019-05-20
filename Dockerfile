@@ -25,6 +25,7 @@ COPY ./test/example.test.js /dist/test/example.test.js
 RUN npm install --only=dev && npm test
 COPY ci-pipeline-sa* ./
 
+# PUSH the test artifact "out.html" OUT of the container to google cloud storage where it can be viewed properly.
 RUN if [ "$push_test_results" = "true" ] ; then \
     gcloud auth activate-service-account ci-pipeline@cookbook-1180.iam.gserviceaccount.com --key-file=./ci-pipeline-sa.json ; \
     gsutil cp ./out.html gs://tyrconsulting-push-test/results_$(date +"%Y-%m-%d_%H-%M-%S").html ; \
