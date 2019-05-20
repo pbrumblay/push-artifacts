@@ -1,4 +1,13 @@
 steps:
+- name: gcr.io/cloud-builders/gcloud
+  args:
+  - kms
+  - decrypt
+  - --ciphertext-file=ci-pipeline-sa.json.enc
+  - --plaintext-file=ci-pipeline-sa.json
+  - --location=global
+  - --keyring=ci-pipeline-keyring
+  - --key=ci-pipeline-key
 
 - name: 'gcr.io/cloud-builders/docker'
   id: Build AG Node Prod
