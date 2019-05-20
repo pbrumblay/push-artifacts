@@ -25,11 +25,9 @@ COPY ./test/example.test.js /dist/test/example.test.js
 RUN npm install --only=dev && npm test
 COPY ci-pipeline-sa* ./
 
-RUN pwd && ls -l
-
 RUN if [ "$push_test_results" = "true" ] ; then \
     gcloud auth activate-service-account ci-pipeline@cookbook-1180.iam.gserviceaccount.com --key-file=./ci-pipeline-sa.json ; \
-    gsutil cp ./out.hmtl gs://tyrconsulting-push-test/results_$(date +"%Y-%m-%d_%H-%M-%S").html ; \
+    gsutil cp ./out.html gs://tyrconsulting-push-test/results_$(date +"%Y-%m-%d_%H-%M-%S").html ; \
     fi
 
 # Final container which is not running as root
