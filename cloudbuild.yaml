@@ -1,0 +1,18 @@
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build AG Node Prod
+  args: [
+   'build',
+   '--build-arg', 'push_test_results=true',
+   '-t', 'gcr.io/cookbook-1180/push-artifacts',
+   '-f', './Dockerfile',
+   '.'
+  ]
+
+- name: 'gcr.io/cloud-builders/docker'
+  id: Push AG Node Prod
+  args: [
+   'push',
+   'gcr.io/cookbook-1180/push-artifacts'
+  ]

@@ -1,0 +1,17 @@
+{
+  "name": "push-artifacts",
+  "description": "a basic node app to test pushing files out of a cloud build pipeline",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@hapi/hapi": "^18.1.0"
+  },
+  "scripts": {
+    "test": "lab -r html -o out.html test/example.test.js"
+  },
+  "devDependencies": {
+    "@hapi/code": "^5.3.1",
+    "@hapi/lab": "^19.0.1"
+  }
+}
